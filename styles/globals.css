@@ -1,9 +1,26 @@
+@font-face {
+  font-family: "Articulat";
+  src: url("/assets/fonts/ArticulatCF-Medium.otf");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Articulat";
+  src: url("/assets/fonts/ArticulatCF-Normal.otf");
+  font-weight: 500;
+}
+
+body {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 100%;
+  font-family: "Articulat", helvetica, arial, sans-serif;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 a {
