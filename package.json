@@ -1,4 +1,5 @@
 {
+  "name": "frontend-platform-test",
   "private": true,
   "scripts": {
     "dev": "next dev",
