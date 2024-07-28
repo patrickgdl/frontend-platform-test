@@ -1,0 +1,16 @@
+.container {
+  height: calc(100% - var(--header-height));
+  background-color: var(--song-background);
+  width: 100%;
+  padding: 75px var(--horizontal-padding);
+  display: flex;
+  flex-direction: column;
+  gap: 95px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-auto-rows: auto;
+  grid-gap: 1rem;
+}

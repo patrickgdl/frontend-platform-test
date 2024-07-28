@@ -1,0 +1,11 @@
+.progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.time {
+  font-size: 13px;
+  line-height: 46px;
+}

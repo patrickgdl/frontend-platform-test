@@ -1,0 +1,43 @@
+.audioInfo {
+  display: flex;
+  gap: 20px;
+}
+
+.audioImage {
+  width: 300px;
+  height: 300px;
+  background: #1e1e1e;
+}
+
+.audioImage img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.audioIcon {
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  background: #989898;
+}
+
+.title {
+  font-weight: 100;
+  font-size: 32px;
+  margin-bottom: 0;
+  padding: 2px;
+  line-height: 37px;
+}

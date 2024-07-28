@@ -21,9 +21,14 @@
   line-height: 16.8px;
 }
 
+.hidden:checked + .toggle {
+  background-color: var(--white-25-opacity);
+}
+
 .hidden:checked + .toggle > svg {
   fill: var(--red);
 }
+
 .hidden:focus + .toggle {
   outline: 1px solid var(--white);
 }

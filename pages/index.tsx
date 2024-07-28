@@ -108,7 +108,7 @@ export default function Home() {
                   subtitle={s.song.artist}
                   favorited={favoriteSongs.includes(s.id)}
                   onFavorite={() => handleFavoriteSong(s.id)}
-                  image={`assets/images/${s.song.files.coverArt}`}
+                  image={`/assets/images/${s.song.files.coverArt}`}
                 />
               </Link>
             );

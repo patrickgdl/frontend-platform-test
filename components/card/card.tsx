@@ -6,9 +6,9 @@ type CardProps = {
   title: string;
   subtitle: string;
   image: string;
-  hasFavorite: boolean;
-  favorited: boolean;
-  onFavorite: () => void;
+  hasFavorite?: boolean;
+  favorited?: boolean;
+  onFavorite?: () => void;
 };
 
 const Card = ({

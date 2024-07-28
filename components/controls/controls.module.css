@@ -1,0 +1,19 @@
+.controlsWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.controlsWrapper button {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  color: var(--black);
+  text-align: center;
+  text-decoration: none;
+  background-color: var(--white);
+  outline: 0px;
+  border: 0px;
+  padding: 0;
+}

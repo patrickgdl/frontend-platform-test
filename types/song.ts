@@ -1,5 +1,6 @@
 export interface Song {
   id: number;
+  related?: number[];
   song: Metadata;
 }
 
