@@ -16,10 +16,17 @@ const useSongById = ({ id }: { id: string | string[] }) => {
           setSong(songData);
 
           if (songData.related && songData.related.length > 0) {
-            const relatedSongsData = await Promise.all(
+            const relatedSongsData = await Promise.allSettled(
               songData.related.map((id) => getSongById(String(id)))
             );
-            setRelatedSongs(relatedSongsData);
+
+            const fulfilledResults = relatedSongsData
+              .filter((result) => result.status === "fulfilled")
+              .map((result) => result.value);
+
+            setRelatedSongs(fulfilledResults);
+          } else {
+            setRelatedSongs([]);
           }
         }
       } catch (error) {
