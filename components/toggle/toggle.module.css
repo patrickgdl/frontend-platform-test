@@ -1,0 +1,31 @@
+.hidden {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.toggle {
+  background-color: var(--white-15-opacity);
+  border: none;
+  color: var(--white);
+  padding: 0.5rem 1.5rem;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 16.8px;
+}
+
+.hidden:checked + .toggle > svg {
+  fill: var(--red);
+}
+
+.hidden:checked + .toggle > svg > path {
+  stroke: var(--red);
+}

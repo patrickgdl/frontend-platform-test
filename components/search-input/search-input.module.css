@@ -1,0 +1,65 @@
+/*the container must be positioned relative:*/
+.autocomplete {
+  position: relative;
+  display: inline-block;
+}
+
+.search {
+  border: none;
+  background: var(--white-15-opacity);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  line-height: 19.2px;
+  font-size: 1rem;
+  color: var(--white);
+  padding: 0.5rem 0.5rem 0.5rem 32px;
+  background-image: url("../../public/search.svg");
+  background-position: 0.5rem 0.5rem;
+  background-repeat: no-repeat;
+  width: 100%;
+}
+
+.search::placeholder {
+  font-size: 1rem;
+  color: var(--white);
+  font-weight: 500;
+  line-height: 19.2px;
+}
+
+.autocompleteItems {
+  position: absolute;
+  z-index: 99;
+  border-radius: 0.5rem;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 6px;
+  padding: 1rem;
+  background: var(--autocomplete-background);
+  color: var(--autocomplete-color);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 19.2px;
+}
+
+.autocompleteItems > li {
+  cursor: pointer;
+}
+
+.autocompleteItems > li:first-child {
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.autocompleteItems > li:last-child {
+  border-radius: 0 0 0.5rem 0.5rem;
+}
+.autocompleteItems > li:last-child > .separator {
+  border: 0;
+  margin: 0;
+}
+
+.separator {
+  margin: 14px 0;
+  border: 1px solid var(--separator);
+}

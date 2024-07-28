@@ -1,0 +1,49 @@
+.card {
+  border-radius: 5px;
+  background: var(--card-background);
+}
+
+.card:hover {
+  scale: 1.02;
+}
+
+.image {
+  width: 100%;
+  border-radius: 5px 5px 0 0;
+}
+
+.container {
+  padding: 1rem;
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 19.44px;
+  margin: 0 0 0.75rem;
+}
+
+.subtitle {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 14.4px;
+  color: var(--gray);
+}
+
+.iconButton {
+  background-color: transparent;
+  outline: 0px;
+  border: 0px;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.iconButton:active,
+.iconButton:focus {
+  border: 1px solid var(--white);
+}
