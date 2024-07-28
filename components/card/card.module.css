@@ -25,11 +25,27 @@
   font-weight: 600;
   line-height: 19.44px;
   margin: 0 0 0.75rem;
+
+  /* when overflow 215px is going to show "..." */
+  max-width: 215px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .subtitle {
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 600;
   line-height: 14.4px;
   color: var(--gray);
+}
+
+/* iPads, Tablets */
+@media (max-width: 1024px) {
+  .title {
+    max-width: none;
+    white-space: normal;
+    overflow: auto;
+    text-overflow: clip;
+  }
 }
