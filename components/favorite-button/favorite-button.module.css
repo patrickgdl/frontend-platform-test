@@ -1,0 +1,14 @@
+.iconButton {
+  display: inline-flex;
+  background-color: transparent;
+  outline: 0px;
+  border: 0px;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.iconButton:active,
+.iconButton:focus {
+  border: 1px solid var(--white);
+}

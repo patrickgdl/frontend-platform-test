@@ -24,18 +24,9 @@
   --separator: #545454;
   --active: #00dae8;
 
-  --background: #a8a8a8;
-  --background: linear-gradient(227.01deg, #0affa7 15.36%, #00dae8 86.7%);
-
-  --background: linear-gradient(90deg, #12303b 0%, rgba(18, 48, 59, 0) 100%);
-  --background: #c4c4c4;
-
   --white-15-opacity: #ffffff26;
   --white-50-opacity: #ffffff80;
   --white-25-opacity: #ffffff40;
-  --white-100: #ffffff1a;
-  --white-100: #ffffffb2;
-  --white-100: #ffffffe5;
 
   /* sizes */
   --header-height: 80px;

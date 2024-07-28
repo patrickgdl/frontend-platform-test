@@ -6,11 +6,32 @@
   display: flex;
   flex-direction: column;
   gap: 95px;
+  position: relative;
 }
 
 .cards {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-auto-rows: auto;
   grid-gap: 1rem;
+}
+
+.backgroundImage {
+  position: absolute;
+  top: calc(var(--header-height) * -0.9);
+  right: calc(var(--horizontal-padding) - 2rem);
+  opacity: 0.2;
+  width: 650px;
+  height: 650px;
+  background-color: linear-gradient(
+    90deg,
+    #12303b 0%,
+    rgba(18, 48, 59, 0) 100%
+  );
+}
+
+.otherTitle {
+  font-weight: 500;
+  line-height: 19.2px;
 }

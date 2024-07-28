@@ -1,6 +1,7 @@
 import HeartIcon from "@/components/icons/heart";
 
 import styles from "./card.module.css";
+import FavoriteButton from "../favorite-button/favorite-button";
 
 type CardProps = {
   title: string;
@@ -38,13 +39,7 @@ const Card = ({
         </div>
 
         {hasFavorite && (
-          <button
-            onClick={handleFavorite}
-            className={styles.iconButton}
-            style={{ color: favorited ? "var(--red)" : "var(--white)" }}
-          >
-            <HeartIcon fill={favorited ? "var(--red)" : "transparent"} />
-          </button>
+          <FavoriteButton favorited={favorited} onFavorite={handleFavorite} />
         )}
       </div>
     </div>

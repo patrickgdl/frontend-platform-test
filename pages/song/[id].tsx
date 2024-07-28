@@ -7,6 +7,7 @@ import * as React from "react";
 import SearchInput from "@/components/search-input/search-input";
 import Card from "@/components/card/card";
 import AudioPlayer from "@/components/audio-player/audio-player";
+import Link from "next/link";
 
 export default function Home() {
   const router = useRouter();
@@ -28,21 +29,24 @@ export default function Home() {
       </Header>
 
       <main className={styles.container}>
-        <div className={styles.navigation}>
-          <AudioPlayer currentTrack={song} />
-        </div>
+        <img
+          className={styles.backgroundImage}
+          src={`/assets/images/${song.song.files.coverArt}`}
+        />
+        <AudioPlayer currentTrack={song} />
 
         <div>
-          <h4>Other albums</h4>
+          <h4 className={styles.otherTitle}>Other albums</h4>
           <div className={styles.cards}>
             {relatedSongs.map((s) => {
               return (
-                <Card
-                  key={s.id}
-                  title={s.song.title}
-                  subtitle={s.song.artist}
-                  image={`/assets/images/${s.song.files.coverArt}`}
-                />
+                <Link key={s.id} href={`/song/${s.id}`}>
+                  <Card
+                    title={s.song.title}
+                    subtitle={s.song.artist}
+                    image={`/assets/images/${s.song.files.coverArt}`}
+                  />
+                </Link>
               );
             })}
           </div>

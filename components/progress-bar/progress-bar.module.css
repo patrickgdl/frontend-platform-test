@@ -1,11 +1,57 @@
 .progress {
   display: flex;
-  align-items: center;
-  gap: 10px;
+  flex-direction: column;
+  gap: 0.75rem;
   width: 100%;
 }
 
+/* reset */
+.range {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* Removes default focus */
+.range:focus {
+  outline: none;
+}
+
+/***** Chrome, Safari, Opera and Edge Chromium styles *****/
+/* slider track */
+.range::-webkit-slider-runnable-track {
+  background-color: var(--white);
+  border-radius: 2px;
+  height: 2px;
+}
+
+/* slider thumb */
+.range::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  margin-top: -5px; /* Centers thumb on the track */
+
+  /*custom styles*/
+  background-color: var(--white);
+  border-radius: 100rem;
+  height: 0.75rem;
+  width: 0.75rem;
+}
+
+.range:focus::-webkit-slider-thumb {
+  outline: 3px solid var(--active);
+  outline-offset: 0.125rem;
+}
+
 .time {
-  font-size: 13px;
-  line-height: 46px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16.8px;
+}
+
+.timeWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }

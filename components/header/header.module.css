@@ -4,6 +4,8 @@
   padding: 0 var(--horizontal-padding);
   background-color: var(--header-background);
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  z-index: 10;
+  gap: 4rem;
+  position: relative;
 }
