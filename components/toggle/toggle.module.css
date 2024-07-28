@@ -1,6 +1,5 @@
 .hidden {
   position: absolute;
-  visibility: hidden;
   opacity: 0;
 }
 
@@ -24,6 +23,9 @@
 
 .hidden:checked + .toggle > svg {
   fill: var(--red);
+}
+.hidden:focus + .toggle {
+  outline: 1px solid var(--white);
 }
 
 .hidden:checked + .toggle > svg > path {

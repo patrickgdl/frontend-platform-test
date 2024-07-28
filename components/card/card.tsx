@@ -19,6 +19,13 @@ const Card = ({
   favorited,
   onFavorite,
 }: CardProps) => {
+  const handleFavorite = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    e.preventDefault();
+
+    onFavorite();
+  };
+
   return (
     <div className={styles.card}>
       <img src={image} alt={title} className={styles.image} />
@@ -32,11 +39,11 @@ const Card = ({
 
         {hasFavorite && (
           <button
-            onClick={onFavorite}
+            onClick={handleFavorite}
             className={styles.iconButton}
             style={{ color: favorited ? "var(--red)" : "var(--white)" }}
           >
-            <HeartIcon />
+            <HeartIcon fill={favorited ? "var(--red)" : "transparent"} />
           </button>
         )}
       </div>

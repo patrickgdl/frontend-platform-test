@@ -2,9 +2,10 @@ import Card from "@/components/card/card";
 import SearchInput from "@/components/search-input/search-input";
 import Switch from "@/components/switch/switch";
 import Toggle from "@/components/toggle/toggle";
-import { getSongs } from "@/services/get-songs";
+import Header from "@/components/header/header";
+import useLocalStorage from "@/hooks/use-local-storage";
+import useSongs from "@/hooks/use-songs";
 import styles from "@/styles/home.module.css";
-import { Song } from "@/types/song";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -12,34 +13,52 @@ import * as React from "react";
 
 export default function Home() {
   const router = useRouter();
-  const [songs, setSongs] = React.useState<Song[]>([]);
 
   const { query } = router;
-  const { sort } = query;
+  const { sort, favoritesOnly } = query;
+
+  const songs = useSongs();
+  const [favoriteSongs, setFavoriteSongs] = useLocalStorage(
+    "favoriteSongs",
+    []
+  );
 
   const orderedSongs = React.useMemo(() => {
-    return sort
-      ? songs.sort((a, b) => {
-          if (sort === "asc") {
-            return a.song.title.localeCompare(b.song.title);
-          } else if (sort === "desc") {
-            return b.song.title.localeCompare(a.song.title);
-          } else {
-            throw new Error("Invalid sort order");
-          }
-        })
+    return sort === "true"
+      ? [...songs].sort((a, b) => a.song.title.localeCompare(b.song.title))
       : songs;
   }, [sort, songs]);
 
-  React.useEffect(() => {
-    getSongs()
-      .then((data) => setSongs(data))
-      .catch((error) => console.log(error));
-  }, []);
+  const filteredSongs = React.useMemo(() => {
+    return favoritesOnly === "true"
+      ? orderedSongs.filter((s) => favoriteSongs.includes(s.id))
+      : orderedSongs;
+  }, [favoritesOnly, orderedSongs]);
 
-  const handleSwitchSort = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newSort = event.target.checked ? "asc" : "desc";
-    router.push({ pathname: "/", query: { sort: newSort } });
+  const handleSwitchSort = (e: React.ChangeEvent<HTMLInputElement>) => {
+    router.push({
+      pathname: "/",
+      query: { favoritesOnly, sort: e.target.checked },
+    });
+  };
+
+  const handleFavoriteFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
+    router.push({
+      pathname: "/",
+      query: { sort, favoritesOnly: e.target.checked },
+    });
+  };
+
+  const handleFavoriteSong = (id: number) => {
+    setFavoriteSongs((prevFavorites: number[]) => {
+      if (prevFavorites.includes(id)) {
+        // Remove from favorites
+        return prevFavorites.filter((favId) => favId !== id);
+      } else {
+        // Add to favorites
+        return [...prevFavorites, id];
+      }
+    });
   };
 
   return (
@@ -49,12 +68,17 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className={styles.container}>
+      <Header />
+
+      <main className={styles.container}>
         <div className={styles.navigation}>
           <div>
             <div className={styles.library}>
               <h1 className={styles.title}>Your Library</h1>
-              <Toggle>
+              <Toggle
+                checked={favoritesOnly === "true"}
+                onChange={handleFavoriteFilter}
+              >
                 <span>Favorites</span>
               </Toggle>
             </div>
@@ -67,31 +91,30 @@ export default function Home() {
           <div className={styles.filters}>
             <div className={styles.sort}>
               <h3>Sort from A-Z</h3>
-              <Switch onChange={handleSwitchSort} />
+              <Switch checked={sort === "true"} onChange={handleSwitchSort} />
             </div>
 
-            <SearchInput songs={orderedSongs} />
+            <SearchInput songs={songs} />
           </div>
         </div>
 
         <div className={styles.cards}>
-          {orderedSongs.map((s) => {
+          {filteredSongs.map((s) => {
             return (
-              <Link href={`/song/${s.id}`}>
+              <Link key={s.id} href={`/song/${s.id}`}>
                 <Card
-                  key={s.id}
                   hasFavorite
-                  favorited={true}
-                  onFavorite={() => null}
                   title={s.song.title}
                   subtitle={s.song.artist}
+                  favorited={favoriteSongs.includes(s.id)}
+                  onFavorite={() => handleFavoriteSong(s.id)}
                   image={`assets/images/${s.song.files.coverArt}`}
                 />
               </Link>
             );
           })}
         </div>
-      </div>
+      </main>
     </>
   );
 }

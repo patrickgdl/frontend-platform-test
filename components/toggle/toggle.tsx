@@ -2,10 +2,23 @@ import HeartIcon from "@/components/icons/heart";
 
 import styles from "./toggle.module.css";
 
-const Toggle = ({ children }: { children: React.ReactNode }) => {
+type ToggleProps = {
+  children: React.ReactNode;
+  checked: boolean;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+};
+
+const Toggle = ({ children, onChange, checked }: ToggleProps) => {
   return (
     <>
-      <input type="checkbox" className={styles.hidden} name="cb" id="cb" />
+      <input
+        id="cb"
+        name="cb"
+        type="checkbox"
+        checked={checked}
+        onChange={onChange}
+        className={styles.hidden}
+      />
       <label htmlFor="cb" className={styles.toggle}>
         <HeartIcon />
         {children}
