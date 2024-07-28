@@ -38,19 +38,23 @@ const SearchInput = ({ songs }: { songs: Song[] }) => {
 
       {suggestions.length > 0 && (
         <ul className={styles.autocompleteItems}>
-          {suggestions.map((suggestion) => (
-            <Link
-              href={`/song/${suggestion.id}`}
-              onClick={handleSuggestionClick}
-            >
-              <li key={suggestion.id}>
-                {suggestion.song.title}
-                {suggestions.length > 1 ? (
-                  <hr className={styles.separator} />
-                ) : null}
-              </li>
-            </Link>
-          ))}
+          {suggestions.map((suggestion, index) => {
+            const isLastItem = index === suggestions.length - 1;
+            const onlyOneItem = suggestions.length === 1;
+            return (
+              <Link
+                href={`/song/${suggestion.id}`}
+                onClick={handleSuggestionClick}
+              >
+                <li key={suggestion.id}>
+                  {suggestion.song.title}
+                  {!onlyOneItem && !isLastItem ? (
+                    <hr className={styles.separator} />
+                  ) : null}
+                </li>
+              </Link>
+            );
+          })}
         </ul>
       )}
     </div>
