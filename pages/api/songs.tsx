@@ -10,8 +10,10 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<ResponseData>
 ) {
+  const jsonDirectory = path.join(process.cwd(), "json");
+
   const fileContents = await fs.readFile(
-    process.cwd() + "/server-payload.json",
+    jsonDirectory + "/server-payload.json",
     "utf8"
   );
   const payload = JSON.parse(fileContents);
