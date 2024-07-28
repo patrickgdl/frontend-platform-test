@@ -7,6 +7,7 @@
 .audioImage {
   width: 200px;
   height: 200px;
+  border: 1px solid var(--gray);
 }
 
 .audioImage img {
@@ -63,8 +64,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .playButton:focus {
   outline: 2px solid var(--active);
+}
+
+/* iPads, Tablets */
+@media (max-width: 768px) {
+  .audioImage {
+    display: none;
+  }
+  .title {
+    font-size: 1.5rem;
+  }
+  .subtitle {
+    font-size: 0.75rem;
+  }
 }

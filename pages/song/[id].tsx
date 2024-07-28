@@ -8,14 +8,22 @@ import SearchInput from "@/components/search-input/search-input";
 import Card from "@/components/card/card";
 import AudioPlayer from "@/components/audio-player/audio-player";
 import Link from "next/link";
+import useSongs from "@/hooks/use-songs";
 
 export default function Home() {
   const router = useRouter();
   const { id } = router.query;
 
+  const songs = useSongs();
   const { song, relatedSongs } = useSongById({ id });
 
-  if (!song) return <h1>Loading...</h1>;
+  if (!song) {
+    return (
+      <div className={styles.container}>
+        <h4>Loading...</h4>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -25,7 +33,7 @@ export default function Home() {
       </Head>
 
       <Header>
-        <SearchInput songs={[]} />
+        <SearchInput songs={songs} />
       </Header>
 
       <main className={styles.container}>

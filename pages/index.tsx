@@ -61,6 +61,14 @@ export default function Home() {
     });
   };
 
+  if (songs.length < 1) {
+    return (
+      <div className={styles.container}>
+        <h4>Loading...</h4>
+      </div>
+    );
+  }
+
   return (
     <>
       <Head>
@@ -71,31 +79,31 @@ export default function Home() {
       <Header />
 
       <main className={styles.container}>
-        <div className={styles.navigation}>
-          <div>
+        <div className={styles.content}>
+          <div className={styles.navigation}>
             <div className={styles.library}>
               <h1 className={styles.title}>Your Library</h1>
               <Toggle
-                checked={favoritesOnly === "true"}
                 onChange={handleFavoriteFilter}
+                checked={favoritesOnly === "true"}
               >
                 <span>Favorites</span>
               </Toggle>
             </div>
 
-            <h2 className={styles.subtitle}>
-              You have {songs.length} songs in your library
-            </h2>
-          </div>
+            <div className={styles.filters}>
+              <div className={styles.sort}>
+                <h3>Sort from A-Z</h3>
+                <Switch checked={sort === "true"} onChange={handleSwitchSort} />
+              </div>
 
-          <div className={styles.filters}>
-            <div className={styles.sort}>
-              <h3>Sort from A-Z</h3>
-              <Switch checked={sort === "true"} onChange={handleSwitchSort} />
+              <SearchInput songs={songs} />
             </div>
-
-            <SearchInput songs={songs} />
           </div>
+
+          <h2 className={styles.subtitle}>
+            You have {songs.length} songs in your library
+          </h2>
         </div>
 
         <div className={styles.cards}>

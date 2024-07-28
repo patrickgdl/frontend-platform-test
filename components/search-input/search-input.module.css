@@ -6,7 +6,7 @@
 
 .search {
   border: none;
-  background: var(--white-15-opacity);
+  background-color: var(--white-15-opacity);
   padding: 0.5rem;
   border-radius: 0.5rem;
   line-height: 19.2px;
@@ -17,6 +17,10 @@
   background-position: 0.5rem 0.5rem;
   background-repeat: no-repeat;
   width: 100%;
+}
+.search:focus-within {
+  outline: none;
+  background-color: var(--white-25-opacity);
 }
 
 .search::placeholder {

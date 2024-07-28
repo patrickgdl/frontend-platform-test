@@ -9,3 +9,16 @@
   gap: 4rem;
   position: relative;
 }
+
+/* iPads, Tablets */
+@media (max-width: 768px) {
+  .header {
+    padding: 0.5rem 1rem;
+  }
+
+  .header:has(input) {
+    gap: 0.5rem;
+    flex-direction: column;
+    height: calc(var(--header-height) + 0.5rem);
+  }
+}

@@ -2,6 +2,7 @@ import * as React from "react";
 import { Song } from "@/types/song";
 
 import styles from "./search-input.module.css";
+import Link from "next/link";
 
 const SearchInput = ({ songs }: { songs: Song[] }) => {
   const [query, setQuery] = React.useState("");
@@ -20,9 +21,9 @@ const SearchInput = ({ songs }: { songs: Song[] }) => {
     }
   };
 
-  const handleSuggestionClick = (value: string) => {
+  const handleSuggestionClick = () => {
     setSuggestions([]);
-    setQuery(value);
+    setQuery("");
   };
 
   return (
@@ -38,13 +39,17 @@ const SearchInput = ({ songs }: { songs: Song[] }) => {
       {suggestions.length > 0 && (
         <ul className={styles.autocompleteItems}>
           {suggestions.map((suggestion) => (
-            <li
-              key={suggestion.id}
-              onClick={() => handleSuggestionClick(suggestion.song.title)}
+            <Link
+              href={`/song/${suggestion.id}`}
+              onClick={handleSuggestionClick}
             >
-              {suggestion.song.title}
-              <hr className={styles.separator} />
-            </li>
+              <li key={suggestion.id}>
+                {suggestion.song.title}
+                {suggestions.length > 1 ? (
+                  <hr className={styles.separator} />
+                ) : null}
+              </li>
+            </Link>
           ))}
         </ul>
       )}
